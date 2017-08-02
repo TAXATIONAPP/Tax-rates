@@ -1,0 +1,161 @@
+<DOCTYPE>
+	<html>
+	<head>
+		<title>Angular Salary App</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.theme.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	</head>
+  <style>
+  body{
+    text-align: center;
+    background-image: url(PIX4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+  }
+  .container{
+    margin-top: 50px;
+  }
+  .row{
+    background-color: rgba(0, 0, 0, 0.35);
+  }
+  input{
+    color: #000;
+  }
+  </style>
+
+	<body ng-app="myApp">
+  <div class="container" ng-controller="MathController">
+  <div class="row">
+    <div class="col-md-8">
+      <table style="width:100%;margin: 0 auto;" class="table table-bordered">
+              <h1>PAYROLL CALCULATOR</h1>
+              <tbody>
+              <tr>
+                <td>NHIF Deduction:</td>
+                <td>NSSF Deduction:</td>
+                <td>The Income Tax deduction is:</td>
+                <td>Your final salary is:</td>
+              </tr>
+              </tbody>
+              <tr>
+                <td>{{NHIF().toFixed(2)}}</td>
+                <td>{{NSSF().toFixed(2)}}</td>
+                <td>{{incomeTax().toFixed(2)}}</td>
+                <td>{{totalSalary().toFixed(2)}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </table>
+    </div>
+    <div class="col-md-4">
+      <h2>Enter your salary: <input type="text" ng-model="gross"/> </h2>
+    </div>
+  </div>
+
+<!-- <script src="app.js"></script> -->
+
+<script>
+	var app = angular.module('myApp', []);
+
+app.controller("MainController" , function($scope){
+    $scope.title = "It is working.";
+    
+});
+
+app.controller('MathController', function($scope) {
+
+      $scope.gross = 0;
+      $scope.insurance = 150;
+      $scope.cpp = 6;
+      $scope.NHIF = function() {
+
+        if ($scope.gross <=5999) {
+              return 150;
+            }
+            else if ($scope.gross >= 6000 && $scope.gross <= 7999) {
+              return 300;
+            }
+             else if ($scope.gross >= 8000 && $scope.gross <= 11999) {
+              return 400;
+            }
+            else if($scope.gross >= 12000 && $scope.gross <= 14999){
+              return 500;
+            }
+            else if($scope.gross >= 15000 && $scope.gross <= 19999){
+              return 600;
+            }
+            else if($scope.gross >= 20000 && $scope.gross <= 24999){
+              return 750;
+            }
+            else if($scope.gross >= 25000 && $scope.gross <= 29999){
+              return 850;
+            }
+            else if($scope.gross >= 30000 && $scope.gross <= 34999){
+              return 900;
+            }
+            else if($scope.gross >= 35000 && $scope.gross <= 39999){
+              return 950;
+            }
+            else if($scope.gross >= 40000 && $scope.gross <= 44999){
+              return 1000;
+            }
+            else if($scope.gross >= 45000 && $scope.gross <= 49999){
+              return 1100;
+            }
+            else if($scope.gross >= 50000 && $scope.gross <= 59999){
+              return 1200;
+            }
+            else if($scope.gross >= 60000 && $scope.gross <= 69999){
+              return 1300;
+            }
+            else if($scope.gross >= 70000 && $scope.gross <= 79999){
+              return 1400;
+            }
+            else if($scope.gross >= 80000 && $scope.gross <= 89999){
+              return 1500;
+            }
+            else if($scope.gross >= 90000 && $scope.gross <= 99999){
+              return 1600;
+            }
+        else{
+          return 1700;
+        }
+      }
+
+      $scope.NSSF = function(){
+        return (Number($scope.gross) * (Number($scope.cpp)/100));
+      } 
+         
+      $scope.incomeTax = function() {
+            if ($scope.gross <=11180) {
+              return (Number($scope.gross) * 0);
+            }
+            else if ($scope.gross<=21714) {
+              return (Number($scope.gross) * 0);
+            }
+            else if($scope.gross<=32248){
+              return (Number($scope.gross) * 0);
+            }
+            else if($scope.gross<=42782){
+              return (Number($scope.gross) * 0);
+            }
+            else{       
+              return (Number($scope.gross) * 0);
+            }
+        }
+
+        $scope.totalSalary = function(){
+          return (Number($scope.gross) - $scope.NHIF() - $scope.NSSF() - $scope.incomeTax());
+        }
+
+        
+});
+</script>
+</div>
+<script <script src="css/bootstrap.min.js"></script>
+  </body>
+	</html>
