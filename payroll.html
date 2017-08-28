@@ -4,7 +4,7 @@
 		<title>Angular Salary App</title>
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.theme.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 	</head>
@@ -20,7 +20,7 @@
     margin-top: 50px;
   }
   .row{
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.75);
   }
   input{
     color: #000;
@@ -30,7 +30,10 @@
 	<body ng-app="myApp">
   <div class="container" ng-controller="MathController">
   <div class="row">
-    <div class="col-md-8">
+  <div class="col-md-12">
+      <h2>Enter your salary: <input type="text" ng-model="gross"/> </h2>
+    </div>
+    <div class="col-md-12">
       <table style="width:100%;margin: 0 auto;" class="table table-bordered">
               <h1>PAYROLL CALCULATOR</h1>
               <tbody>
@@ -51,9 +54,7 @@
             </table>
           </table>
     </div>
-    <div class="col-md-4">
-      <h2>Enter your salary: <input type="text" ng-model="gross"/> </h2>
-    </div>
+    
   </div>
 
 <!-- <script src="app.js"></script> -->
@@ -70,7 +71,7 @@ app.controller('MathController', function($scope) {
 
       $scope.gross = 0;
       $scope.insurance = 150;
-      $scope.cpp = 6;
+      $scope.cpp= 5.4;
       $scope.NHIF = function() {
 
         if ($scope.gross <=5999) {
@@ -131,17 +132,23 @@ app.controller('MathController', function($scope) {
       } 
          
       $scope.incomeTax = function() {
-            if ($scope.gross <=11180) {
+            if ($scope.gross < 11135) {
               return (Number($scope.gross) * 0);
             }
-            else if ($scope.gross<=21714) {
-              return (Number($scope.gross) * 0);
+            else if ($scope.gross >= 11135 && $scope.gross <= 134164) {
+              return (Number($scope.gross) * 0.1);
             }
-            else if($scope.gross<=32248){
-              return (Number($scope.gross) * 0);
+            else if ($scope.gross >= 134165 && $scope.gross <= 260567) {
+              return (Number($scope.gross) * 0.15);
             }
-            else if($scope.gross<=42782){
-              return (Number($scope.gross) * 0);
+            else if($scope.gross >= 260568 && $scope.gross <= 386970){
+              return (Number($scope.gross) * 0.2);
+            }
+            else if($scope.gross >= 386971 && $scope.gross <= 513373){
+              return (Number($scope.gross) * 0.25);
+            }
+            else if($scope.gross > 513373){
+              return (Number($scope.gross) * 0.3);
             }
             else{       
               return (Number($scope.gross) * 0);
@@ -156,6 +163,7 @@ app.controller('MathController', function($scope) {
 });
 </script>
 </div>
-<script <script src="css/bootstrap.min.js"></script>
+<script src="jquery-3.2.1.slim.min.js"></script>
+<script src="bootstrap.min.js"></script>
   </body>
 	</html>
